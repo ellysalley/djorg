@@ -1,0 +1,9 @@
+{% load bootstrap4 %}
+<div class="col-md-8 order-md-1">
+  <h4 class="mb-3">{{action}} Bookmark</h4>
+  <form method="POST" class="bookmark-form needs-validation">
+    {% csrf_token %} {% bootstrap_form form %} {% buttons %}
+    <button type="submit" class="save btn btn-primary btn-lg btn-block">{{button}}</button>
+    {% endbuttons %}
+  </form>
+</div>
