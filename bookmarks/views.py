@@ -16,7 +16,7 @@ def index(request):
     return render(request, 'bookmarks/index.html', context)
 
 def update(request, bookmark_id):
-    bookmark = Bookmark.object.get(pk=bookmark_id)
+    bookmark = Bookmark.objects.get(pk=bookmark_id)
     if request.method == 'POST':
         form = BookmarkForm(request.POST, instance=bookmark)
         if form.is_valid():
