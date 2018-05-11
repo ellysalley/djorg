@@ -3,7 +3,7 @@
   <h4 class="mb-3">{{action}} Bookmark</h4>
   <form method="POST" class="bookmark-form needs-validation">
     {% csrf_token %} {% bootstrap_form form %} {% buttons %}
-    <button type="submit" class="save btn btn-info btn-lg">{{button}}</button>
+    <button type="submit" class="save btn btn-info btn-lg">{{button}} Submit</button>
     {% endbuttons %}
   </form>
 </div>
