@@ -16,10 +16,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import TemplateView
+from graphene_django.views import GraphQLView
+from rest_framework import routers
+from notes.api import NoteViewSet
 
+router = routers.DefaultRouter()
+router.register('notes', NoteViewSet)
 
 urlpatterns = [
     path('', TemplateView.as_view(template_name='djorg_base.html')),
     path('admin/', admin.site.urls),
+    path('api/', include(router.urls)),
     path('bookmarks/', include('bookmarks.urls')),
+    path('graphql/', GraphQLView.as_view(graphiql=True)),
 ]

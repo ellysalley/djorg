@@ -42,8 +42,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # 3rd party apps
     'bootstrap4',
+    'graphene_django',
+    'rest_framework',
     # My apps
     'bookmarks',
+    'notes',
 ]
 
 MIDDLEWARE = [
@@ -75,6 +78,18 @@ TEMPLATES = [
     },
 ]
 
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
+
+GRAPHENE = {
+    'SCHEMA': 'notes.schema.schema'
+}
+
 WSGI_APPLICATION = 'djorg.wsgi.application'
 
 
@@ -82,14 +97,10 @@ WSGI_APPLICATION = 'djorg.wsgi.application'
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    'default': dj_database_url.config(
+    default=config('DATABASE_URL')
+    )
 }
-
-DATABASES['default'] = dj_database_url.config(conn_max_age=600)
-
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
 
@@ -124,8 +135,9 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
 STATIC_URL = '/static/'
-
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Activate Django-Heroku.

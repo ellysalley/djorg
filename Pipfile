@@ -13,7 +13,8 @@ python-decouple = "*"
 whitenoise = "*"
 unipath = "*"
 django-heroku = "*"
-"psycopg2" = "*"
+djangorestframework = "*"
+graphene-django = "*"
 
 [dev-packages]
 
