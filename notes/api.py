@@ -9,7 +9,7 @@ class NoteSerializer(serializers.HyperlinkedModelSerializer):
 
     def create(self, validated_data):
         """Override create to associate current user with new note."""
-        user = self.context['request'].user
+        user = self._context['request'].user
         note = Note.objects.create(user=user, **validated_data)
         return note
 

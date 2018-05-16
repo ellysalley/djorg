@@ -21,7 +21,7 @@ from rest_framework import routers
 from notes.api import NoteViewSet
 
 router = routers.DefaultRouter()
-router.register('notes', NoteViewSet)
+router.register(r'notes', NoteViewSet)
 
 urlpatterns = [
     path('', TemplateView.as_view(template_name='djorg_base.html')),

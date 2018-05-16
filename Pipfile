@@ -15,6 +15,7 @@ unipath = "*"
 django-heroku = "*"
 djangorestframework = "*"
 graphene-django = "*"
+"psycopg2" = "*"
 
 [dev-packages]
 
