@@ -16,6 +16,9 @@ django-heroku = "*"
 djangorestframework = "*"
 graphene-django = "*"
 "psycopg2" = "*"
+django-filter = "*"
+django-allauth = "*"
+django-crispy-forms = "*"
 
 [dev-packages]
 

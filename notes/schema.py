@@ -1,7 +1,7 @@
 from django.conf import settings
 from graphene_django import DjangoObjectType
 import graphene
-from notes.models import Note as NoteModel
+from .models import Note as NoteModel
 
 class Note(DjangoObjectType):
     class Meta:
